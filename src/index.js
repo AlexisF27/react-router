@@ -1,3 +1,5 @@
+import './index.css'
+
 // eslint-disable-next-line no-unused-vars
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 
@@ -9,4 +11,4 @@ root.render(
     <Router>
             <Route path="/" component={App}/>
     </Router>,
-)
+)   

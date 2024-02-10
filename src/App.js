@@ -1,7 +1,7 @@
-//import { useEffect, useState } from 'react';
-
 // eslint-disable-next-line no-unused-vars
 import { Route, Switch, useHistory } from 'react-router'
+// eslint-disable-next-line no-unused-vars
+import { useEffect, useState } from 'react';
 
 import About from './About'
 import Footer from './Footer'
@@ -13,10 +13,11 @@ import NewPost from './NewPost'
 import PostPage from './PostPage'
 
 function App() {
+    const [search, setSearch] = useState('');
     return (
         <div className="App">
-            <Header />
-            <Nav />
+            <Header title="React JS Blog"/>
+            <Nav search={search} setSearch={setSearch} />
             <Switch>
                 <Route exact path="/">
                     <Home />
