@@ -14,13 +14,16 @@ import PostPage from './PostPage'
 
 function App() {
     const [search, setSearch] = useState('');
+    // eslint-disable-next-line no-unused-vars
+    const [searchResults, setSearchResults] = useState('');
+    const [posts, setPosts] = useState([]);
     return (
         <div className="App">
             <Header title="React JS Blog"/>
             <Nav search={search} setSearch={setSearch} />
             <Switch>
                 <Route exact path="/">
-                    <Home />
+                    <Home posts={posts} setPosts={setPosts}/>
                 </Route>
                 <Route path="/about" component={About} />
                 <Route path="/missing" component={Missing} />
