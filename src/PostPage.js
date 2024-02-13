@@ -11,12 +11,22 @@ export const PostPage = ({ posts, handleDelete }) => {
     const post = posts.find((post) => post.id.toString() === id)
     return (
         <main className="PostPage">
-            <article className="post">{post && <>
-              <h2>{post.title}</h2>
-              <p className='postDate'>{post.datetime}</p>
-              <p className='body'>{post.body}</p>
-              <button onClick={() => handleDelete(post.id)}>{post.title}</button>
-            </>}</article>
+            <article className="post">
+                {post && (
+                    <>
+                        <h2>{post.title}</h2>
+                        <p className="postDate">{post.datetime}</p>
+                        <p className="body">{post.body}</p>
+                        <button onClick={() => handleDelete(post.id)}>Delete Post</button>
+                    </>
+                )}{!post && <>
+                  <h2>Post not found</h2>
+                  <h2>well that is dissapointed</h2>
+                  <p>
+                    <Link to="/">Visit our Homepage</Link>
+                  </p>
+                </>}
+            </article>
         </main>
     )
 }

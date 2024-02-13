@@ -37,9 +37,13 @@ function App() {
         },
     ])
 
+    const history = useHistory()
+
     const handleDelete = (postId) => {
         // eslint-disable-next-line no-unused-vars
-        const postToDelete = posts.slice((post) => post.id === postId)
+        const postToDelete = posts.filter((post) => post.id !== postId)
+        setPosts(postToDelete)
+        history.push('/')
     }
 
     return (
