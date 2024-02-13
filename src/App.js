@@ -16,6 +16,8 @@ function App() {
     const [search, setSearch] = useState('')
     // eslint-disable-next-line no-unused-vars
     const [searchResults, setSearchResults] = useState('')
+    const [postTitle, setPostTitle] = useState('')
+    const [postBody, setPostBody] = useState('')
     const [posts, setPosts] = useState([
         {
             id: 1,
@@ -45,6 +47,12 @@ function App() {
         setPosts(postToDelete)
         history.push('/')
     }
+    const handleSubmit = (postId) => {
+        // eslint-disable-next-line no-unused-vars
+        const postToDelete = posts.filter((post) => post.id !== postId)
+        setPosts(postToDelete)
+        history.push('/')
+    }
 
     return (
         <div className="App">
@@ -57,7 +65,13 @@ function App() {
                 <Route path="/about" component={About} />
                 <Route path="/missing" component={Missing} />
                 <Route exact path="/post">
-                    <NewPost />
+                    <NewPost
+                        postBody={postBody}
+                        postTitle={postTitle}
+                        setPostBody={setPostBody}
+                        setPostTitle={setPostTitle}
+                        handleSubmit={handleSubmit}
+                    />
                 </Route>
                 <Route path="/post/:id">
                     <PostPage posts={posts} handleDelete={handleDelete} />
