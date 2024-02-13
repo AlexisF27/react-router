@@ -11,7 +11,7 @@ export const Home = ({posts, setPosts}) => {
 }
 
 Home.propTypes = {
-  posts: PropTypes.string.isRequired,
+  posts: PropTypes.array.isRequired,
   setPosts: PropTypes.func.isRequired,
 }
 export default Home

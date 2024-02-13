@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { Route, Switch, useHistory } from 'react-router'
 // eslint-disable-next-line no-unused-vars
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 import About from './About'
 import Footer from './Footer'
@@ -13,25 +13,50 @@ import NewPost from './NewPost'
 import PostPage from './PostPage'
 
 function App() {
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState('')
     // eslint-disable-next-line no-unused-vars
-    const [searchResults, setSearchResults] = useState('');
-    const [posts, setPosts] = useState([]);
+    const [searchResults, setSearchResults] = useState('')
+    const [posts, setPosts] = useState([
+        {
+            id: 1,
+            title: 'Item 1',
+            datetime: '2024-02-13T12:30:00.000Z',
+            body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        },
+        {
+            id: 2,
+            title: 'Item 2',
+            datetime: '2024-02-14T08:45:00.000Z',
+            body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        },
+        {
+            id: 3,
+            title: 'Item 3',
+            datetime: '2024-02-15T17:00:00.000Z',
+            body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        },
+    ])
+
+    const handleDelete = (postId) => {
+        // eslint-disable-next-line no-unused-vars
+        const postToDelete = posts.slice((post) => post.id === postId)
+    }
+
     return (
         <div className="App">
-            <Header title="React JS Blog"/>
+            <Header title="React JS Blog" />
             <Nav search={search} setSearch={setSearch} />
             <Switch>
                 <Route exact path="/">
-                    <Home posts={posts} setPosts={setPosts}/>
+                    <Home posts={posts} setPosts={setPosts} />
                 </Route>
                 <Route path="/about" component={About} />
                 <Route path="/missing" component={Missing} />
                 <Route exact path="/post">
                     <NewPost />
                 </Route>
-                <Route path="/post/:id" >
-                    <PostPage />
+                <Route path="/post/:id">
+                    <PostPage posts={posts} handleDelete={handleDelete} />
                 </Route>
             </Switch>
             <Footer />

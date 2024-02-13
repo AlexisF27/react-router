@@ -1,8 +1,13 @@
+import Post from './Post'
 import PropTypes from 'prop-types'
-
+// eslint-disable-next-line no-unused-vars
 const Feed = ({posts}) => {
   return (
-    <div>Feed</div>
+    <>
+      {posts.map(post => (
+        <Post key ={post.id} post={post} />
+      ))}
+    </>
   )
 }
 
