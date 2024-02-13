@@ -11,6 +11,7 @@ import Missing from './Missing'
 import Nav from './Nav'
 import NewPost from './NewPost'
 import PostPage from './PostPage'
+import {format} from 'date-fns'
 
 function App() {
     const [search, setSearch] = useState('')
@@ -47,10 +48,16 @@ function App() {
         setPosts(postToDelete)
         history.push('/')
     }
-    const handleSubmit = (postId) => {
+    const handleSubmit = (event) => {
         // eslint-disable-next-line no-unused-vars
-        const postToDelete = posts.filter((post) => post.id !== postId)
-        setPosts(postToDelete)
+        event.preventDefault()
+        const id = posts.length ? posts[posts.length - 1].id + 1 : 1
+        const datetime = format(new Date(), 'MMMM dd, yyyy pp')
+        const newPost = { id, title: postTitle, datetime, body: postBody }
+        const allPosts = [...posts, newPost]
+        setPosts(allPosts)
+        setPostTitle('')
+        setPostBody('')
         history.push('/')
     }
 

@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { Link, useParams } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
